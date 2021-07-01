@@ -38,7 +38,7 @@ extern "C" {
 
         GPIO_InitStruct.Pin = GPIO_PIN_7;
         HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
+        // TODo finihs with that ot support DMA
         // hdma_tx.Instance                 = DMA2_Stream3;
         // hdma_tx.Init.Channel             = DMA_CHANNEL_3;
         // hdma_tx.Init.Direction           = DMA_MEMORY_TO_PERIPH;

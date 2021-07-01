@@ -5,9 +5,8 @@
 
 #include "mbed.h"
 #include "Protocols.h"
-//#include "GraphicsDisplay.h"
 
-/** SPI 8bit interface
+/** FAST SPI interface
 */
 class SPI_DMA : public Protocols
 {
@@ -22,7 +21,7 @@ class SPI_DMA : public Protocols
     * @param reset pin connected to RESET of display
     * @param DC pin connected to data/command of display
     */ 
-    SPI_DMA(int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC=NC);
+    SPI_DMA(int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC=NC);    
  
 protected:
    
@@ -139,7 +138,6 @@ protected:
     DigitalOut _CS;
 
 private:
-
     DigitalOut _reset;
     DigitalOut _DC;
   

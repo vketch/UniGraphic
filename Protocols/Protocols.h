@@ -32,7 +32,7 @@ enum proto_t {
     ,SPI_8  /**< SPI 8bit */
     ,SPI_16 /**< SPI 16bit */
     ,I2C_   /**< I2C */
-    ,SPI_DMA_  /**< SPI_DMA */  
+    ,SPI_DMA_  /**< Fast SPI  */  
 };
 #else 
 enum proto_t {
@@ -50,7 +50,8 @@ enum proto_t {
 class Protocols
 {
  public:
-    
+    virtual ~Protocols(){};
+
     /** Send 8bit command to display controller 
     *
     * @param cmd: byte to send  
