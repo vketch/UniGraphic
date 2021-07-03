@@ -36,7 +36,8 @@ public:
     /** Create a TFT SPI interface
     * @param name The name used by the parent class to access the interface
     */
-    TFT(proto_t displayproto, int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC, const int lcdsize_x, const int lcdsize_y, const char* name);
+    TFT(proto_t displayproto, int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC, const int lcdsize_x, const int lcdsize_y, const char* name, bool do_reset =true);
+
     
     /////// functions that come for free, but can be overwritten///////////////////////////////////////////////////
 /////// ----------------------------------------------------///////////////////////////////////////////////////

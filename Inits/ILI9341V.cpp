@@ -15,10 +15,12 @@ const int PageStartShift = 80;
 const unsigned int LSDSizeX = 240;
 const unsigned int LSDSizeY = 240;
 
-ILI9341V::ILI9341V(proto_t displayproto, int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC, const char *name)
+ILI9341V::ILI9341V(proto_t displayproto, int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC, const char *name, bool do_reset)
     : TFT(displayproto, Hz, mosi, miso, sclk, CS, reset, DC, LSDSizeX, LSDSizeY, name)
 {
-    hw_reset(); //TFT class forwards to Protocol class
+    if(do_reset)
+        hw_reset(); //TFT class forwards to Protocol class
+
     BusEnable(true); //TFT class forwards to Protocol class
 
     //ToDo need impement read over LCD 

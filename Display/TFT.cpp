@@ -76,7 +76,7 @@ TFT::TFT(proto_t displayproto, PinName* buspins, PinName CS, PinName reset, PinN
   //  cls();
   //  locate(0,0);
 }
-TFT::TFT(proto_t displayproto, int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC, const int lcdsize_x, const int lcdsize_y, const char *name)
+TFT::TFT(proto_t displayproto, int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC, const int lcdsize_x, const int lcdsize_y, const char *name, bool do_reset)
     : GraphicsDisplay(name), screensize_X(lcdsize_x), screensize_Y(lcdsize_y)
 {
     if(displayproto==SPI_8)
@@ -91,7 +91,7 @@ TFT::TFT(proto_t displayproto, int Hz, PinName mosi, PinName miso, PinName sclk,
     }
     else if(displayproto==SPI_DMA_)
     {
-        proto = new SPI_DMA(Hz, mosi, miso, sclk, CS, reset, DC);
+        proto = new SPI_DMA(Hz, mosi, miso, sclk, CS, reset, DC, do_reset);
     }
     scrollbugfix=0;
     mipistd=false;
@@ -107,6 +107,8 @@ TFT::TFT(proto_t displayproto, int Hz, PinName mosi, PinName miso, PinName sclk,
     isBGR=false;
   //  locate(0,0);
 }
+
+
 void TFT::wr_cmd8(unsigned char cmd)
     {
         if(useNOP) proto->wr_cmd16(cmd); // 0x0000|cmd, 00 is NOP cmd for TFT

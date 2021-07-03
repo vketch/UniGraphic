@@ -27,9 +27,11 @@ class ILI9341V : public TFT
     * @param reset pin connected to RESET of display
     * @param DC pin connected to data/command of display
     * @param name The name used by the parent class to access the interface
+    * @param reset  reset device in constructor 
     */ 
-    ILI9341V(proto_t displayproto, int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC, const char* name);
-  
+    ILI9341V(proto_t displayproto, int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC, const char* name, bool do_reset=true);
+
+
     /** Set the window, which controls where items are written to the screen.
     * When something hits the window width, it wraps back to the left side
     * and down a row. If the initial write is outside the window, it will

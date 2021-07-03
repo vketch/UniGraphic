@@ -20,7 +20,7 @@
 #include "spidma.h"
 
 
-SPI_DMA::SPI_DMA(int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC)
+SPI_DMA::SPI_DMA(int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC, bool do_reset)
     : _CS(CS), /*_spi(mosi, miso, sclk),*/ _reset(reset), _DC(DC)
 {
     _reset = 1;
@@ -29,7 +29,8 @@ SPI_DMA::SPI_DMA(int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, P
  //   _spi.format(8,0);                  // 8 bit spi mode 0
  //   _spi.frequency(Hz);
     spi_init();
-    hw_reset();    
+    if(do_reset)
+        hw_reset();    
 }
 
 void SPI_DMA::wr_cmd8(unsigned char cmd)

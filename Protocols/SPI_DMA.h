@@ -21,8 +21,8 @@ class SPI_DMA : public Protocols
     * @param reset pin connected to RESET of display
     * @param DC pin connected to data/command of display
     */ 
-    SPI_DMA(int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC=NC);    
- 
+    SPI_DMA(int Hz, PinName mosi, PinName miso, PinName sclk, PinName CS, PinName reset, PinName DC, bool do_reset=true);  
+
 protected:
    
     /** Send 8bit command to display controller 
