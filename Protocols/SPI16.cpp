@@ -68,23 +68,15 @@ void SPI16::wr_gram(unsigned short data, unsigned int count)
 }
 void SPI16::wr_grambuf(unsigned short* data, unsigned int lenght)
 {
-    _spi.transfer((char *)data, lenght*2, (char *)NULL, 0, event_callback_t(this, &SPI16::evenHandler) );
+//    _spi.transfer((char *)data, lenght*2, (char *)NULL, 0, event_callback_t(this, &SPI16::evenHandler) );
 
-    //_spi.write((char *)data, lenght*2, (char *)NULL, 0);
-  
-    //const char* wdata = (const char* )data; 
-    //_spi.write(wdata, lenght, NULL, 0);
-    
-    // while(lenght)
-    // {
-    //     _spi.write(*data);
-
-    //     _spi.write(*data);
-    //     data++;
-    //     lenght--;
-    // }
+    while(lenght)
+    {
+        _spi.write(*data);
+        data++;
+        lenght--;
+    }
 }
-
 unsigned short SPI16::rd_gram(bool convert)
 {
     unsigned int r=0;
@@ -197,6 +189,6 @@ void SPI16::BusEnable(bool enable)
     _CS = enable ? 0:1;
 }
 
-void SPI16::evenHandler( int event ) {
-    return;
-}
+//void SPI16::evenHandler( int event ) {
+//    return;
+//}
